@@ -59,7 +59,7 @@
         src: /tmp/asciiquarium_1.1/asciiquarium
         dest: /usr/local/bin/
         owner: "{{ host_user }}"
-        group: "{{ host_user }}"
+        group: "{{ host_user_group }}"
         force: true
         mode: 0755
       become: true

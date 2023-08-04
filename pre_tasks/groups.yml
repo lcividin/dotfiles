@@ -1,0 +1,10 @@
+---
+- name: Get groups for the user
+  ansible.builtin.shell: groups | cut -d " " -f1
+  register: groups_output
+  changed_when: false
+  become_user: "{{ host_user }}"
+
+- name: Select the first group
+  ansible.builtin.set_fact:
+    host_user_group: "{{ groups_output.stdout_lines[0] }}"

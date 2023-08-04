@@ -105,7 +105,7 @@
         src: /tmp/go
         dest: /usr/local/
         owner: "{{ host_user }}"
-        group: "{{ host_user }}"
+        group: "{{ host_user_group }}"
         force: true
       become: true
       notify:
