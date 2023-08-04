@@ -73,7 +73,7 @@
         src: /tmp/k9s
         dest: /usr/local/bin/
         owner: "{{ host_user }}"
-        group: "{{ host_user }}"
+        # group: "{{ host_user }}"
         force: true
         mode: 0755
       become: true
