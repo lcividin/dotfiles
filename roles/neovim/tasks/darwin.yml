@@ -1,6 +1,6 @@
 ---
 - name: "Neovim | Dependencies"
-  ansible.builtin.apt:
+  community.general.homebrew:
     name:
       - cmake
       - curl
@@ -13,7 +13,7 @@
   become: true
 
 - name: "Neovim | Install"
-  ansible.builtin.apt:
+  community.general.homebrew:
     name: neovim
     state: present
   become: true
