@@ -81,6 +81,10 @@ elif [[ $BOOTSTRAP_OS == "ubuntu" ]]; then
     fi
 elif [[ $BOOTSTRAP_OS == "macos" ]]; then
     echo -e "${CHECK_MARK} ${GREEN}Operating system is macOS!${NC}"
+    if ! command -v brew &>/dev/null; then
+        echo -e "${ARROW} ${CYAN}Installing Homebrew...${NC}"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
     # Install Ansible
     if ! brew list ansible &>/dev/null; then
         echo -e "${ARROW} ${CYAN}Installing Ansible...${NC}"
