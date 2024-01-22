@@ -23,8 +23,6 @@
         mode: 755
       notify:
         - "Bash | Cleanup oh-my-bash install script"
-      args:
-        creates: "{{ ansible_user_dir }}/.oh-my-bash"
 
     - name: "Bash | Run the install script"
       ansible.builtin.script:
