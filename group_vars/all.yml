@@ -2,7 +2,8 @@ default_roles:
   - system
   # - 1password
   # - alacritty
-  - asciiquarium
+  #- asciiquarium
+  - azure
   - bash
   - bat
   #- docker
