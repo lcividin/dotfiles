@@ -27,9 +27,9 @@
       ansible.builtin.script:
         cmd: /{{ ansible_user_dir }}/oh-my-bash.install.sh
   when: 
-    - not ohmybash_is_installed
     - not ansible_check_mode
-    
+    - not ohmybash_is_installed
+
 - name: "Bash | Copy .bashrc"
   ansible.builtin.copy:
     src: ".bashrc"
