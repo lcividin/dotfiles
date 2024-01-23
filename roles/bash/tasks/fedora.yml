@@ -69,7 +69,7 @@
     mode: "0644"
   no_log: true
   when: not ansible_check_mode 
-  
+
 - name: "Bash | Copy Private Files"
   ansible.builtin.lineinfile:
     path: "~/.openai.apikey"
@@ -118,6 +118,7 @@
     src: ".bash_private.j2"
     mode: "0644"
   no_log: true
+  when: not ansible_check_mode 
 
 - name: "Bash | Copy Private Files"
   ansible.builtin.lineinfile:
