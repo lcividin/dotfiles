@@ -13,7 +13,6 @@
     var: ohmybash_is_installed
 
 - name: "Bash | Install oh-my-bash"
-  when: not ohmybash_is_installed or not ansible_check_mode
   block:
     - name: "Bash | Download oh-my-bash Install Script"
       ansible.builtin.get_url:
@@ -27,6 +26,9 @@
     - name: "Bash | Run the install script"
       ansible.builtin.script:
         cmd: "/{{ ansible_user_dir }}/oh-my-bash.install.sh"
+  when: 
+    - not ansible_check_mode
+    - not ohmybash_is_installed
     
 - name: "Bash | Copy .bashrc"
   ansible.builtin.copy:
