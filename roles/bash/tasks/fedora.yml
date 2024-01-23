@@ -26,9 +26,7 @@
     - name: "Bash | Run the install script"
       ansible.builtin.script:
         cmd: "/{{ ansible_user_dir }}/oh-my-bash.install.sh"
-  when: 
-    - not ansible_check_mode
-    #- not ohmybash_is_installed
+  when: not ansible_check_mode and not ohmybash_is_installed
 
 - name: "Bash | Copy .bashrc"
   ansible.builtin.copy:
@@ -70,7 +68,8 @@
     src: ".bash_private.j2"
     mode: "0644"
   no_log: true
-
+  when: not ansible_check_mode 
+  
 - name: "Bash | Copy Private Files"
   ansible.builtin.lineinfile:
     path: "~/.openai.apikey"
