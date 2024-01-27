@@ -48,7 +48,7 @@
 - name: "Go-Lang | Registering go Latest Version"
   ansible.builtin.set_fact:
     go_latest_version: "go version {{ go_latest_version_json.json[0].version }} {{ goos }}/{{ goarch }}"
-  
+  when: not ansible_check_mode
 
 - name: Debug encrypted variable
   debug:
@@ -64,15 +64,18 @@
 - name: "Go-Lang | Define go_file"
   ansible.builtin.set_fact:
     go_file: "{{ go_latest_release }}.{{ goos }}-{{ goarch }}"
+  when: not ansible_check_mode
 
 - name: "Go-Lang | Show current_go_version debug"
   ansible.builtin.debug:
     var: current_go_version.stdout|default('')
+  when: not ansible_check_mode
 
 - name: "Go-Lang | Show go_latest_release debug"
   ansible.builtin.debug:
     var: go_latest_release
-
+  when: not ansible_check_mode
+  
 - name: "Go-Lang | Install"
   block:
     - name: "Go-Lang | Ensure clean download destination"
