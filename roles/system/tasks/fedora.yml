@@ -48,43 +48,43 @@
 #   become: true
 #   when: system_type == "Oryx Pro"
 
-- name: "System | Install Packages"
-  ansible.builtin.dnf:
-    name:
-      - jq
-      - git 
-      - git-lfs
-      - htop
-      - tmux
-      - gcc
-      - gcc-c++
-      - make
-      - go-task
-      - openssl-devel
-      - "@Development Tools"
-      - "@Development Libraries"
-      - "@C Development Tools and Libraries"
-      - ncurses-devel
-      - autoconf
-      - wl-clipboard
-      - libxslt
-      - fop
-      - inotify-tools
-      - ffmpeg
-      - ffmpeg-libs
-      - ffmpegthumbnailer
-      - gnome-tweaks
-      - blender
-      - inkscape
-      - gimp
-      - steam
-      - lutris
-      - calibre  
-      - toilet
-      - dotnet-sdk-8.0
-      - unrar
-    state: present
-  become: true
+# - name: "System | Install Packages"
+#   ansible.builtin.dnf:
+#     name:
+#       - jq
+#       - git 
+#       - git-lfs
+#       - htop
+#       - tmux
+#       - gcc
+#       - gcc-c++
+#       - make
+#       - go-task
+#       - openssl-devel
+#       - "@Development Tools"
+#       - "@Development Libraries"
+#       - "@C Development Tools and Libraries"
+#       - ncurses-devel
+#       - autoconf
+#       - wl-clipboard
+#       - libxslt
+#       - fop
+#       - inotify-tools
+#       - ffmpeg
+#       - ffmpeg-libs
+#       - ffmpegthumbnailer
+#       - gnome-tweaks
+#       - blender
+#       - inkscape
+#       - gimp
+#       - steam
+#       - lutris
+#       - calibre  
+#       - toilet
+#       - dotnet-sdk-8.0
+#       - unrar
+#     state: present
+#   become: true
 
 - name: Import Brave Browser GPG Key
   ansible.builtin.rpm_key:
