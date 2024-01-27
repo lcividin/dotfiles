@@ -8,10 +8,12 @@
 - name: "Zellij | Registering zellij Latest Release"
   ansible.builtin.set_fact:
     zellij_latest_release: "{{ zellij_latest_version_json.json.tag_name }}"
+  when: not ansible_check_mode
 
 - name: "Zellij | Registering zellij Latest Version"
   ansible.builtin.set_fact:
     zellij_latest_version: "{{ zellij_latest_release.stdout|default('') }}"
+  when: not ansible_check_mode
 
 - name: "Zellij | Getting version information"
   ansible.builtin.shell:
