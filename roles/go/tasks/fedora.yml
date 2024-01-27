@@ -75,7 +75,7 @@
   ansible.builtin.debug:
     var: go_latest_release
   when: not ansible_check_mode
-  
+
 - name: "Go-Lang | Install"
   block:
     - name: "Go-Lang | Ensure clean download destination"
@@ -83,6 +83,7 @@
         path: "/tmp/{{ go_file }}.tar.gz"
         state: absent
       become: true
+      when: not ansible_check_mode
 
     - name: "Go-Lang | Downloading GoLang Release"
       ansible.builtin.get_url:
