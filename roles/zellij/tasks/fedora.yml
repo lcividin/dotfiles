@@ -36,12 +36,11 @@
     var: zellij_latest_release
 
 - name: "Zellij | Install"
-  when: zellij_latest_release not in zellij_current_version|default('')
+  when: not ansible_check_mode and zellij_latest_release not in zellij_current_version|default('')
   block:
     - name: "Zellij | Define zellij_file"
       ansible.builtin.set_fact:
         zellij_file: "zellij-{{ ansible_machine }}-unknown-linux-gnu"
-      when: not ansible_check_mode
 
     - name: "Zellij | Ensure clean download destination"
       ansible.builtin.file:
