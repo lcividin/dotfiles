@@ -18,10 +18,11 @@
   register: rocks
   changed_when: false
   check_mode: false
+  when: not ansible_check_mode
 
-# - name: Lua | Install Lua modules
-#   command:
-#     cmd: luarocks install {{ item }} --lacal
-#   loop:
-#     - luabitop
-#   when: item not in rocks.stdout
+- name: Lua | Install Lua modules
+  command:
+    cmd: luarocks install {{ item }} --lacal
+  loop:
+    - luabitop
+  when: item not in rocks.stdout
