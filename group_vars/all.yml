@@ -88,9 +88,9 @@ bash_private:
 #       url: https://helm.traefik.io/traefik
 
 go:
-  # packages:
-    # - package: github.com/stillmatic/chat@latest
-    #   cmd: chat
+  packages:
+    - package: github.com/stillmatic/chat@latest
+      cmd: chat
 
 ssh_key:
   lumen-windows-wsl: 

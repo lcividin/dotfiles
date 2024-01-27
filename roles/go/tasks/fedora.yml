@@ -48,10 +48,18 @@
 - name: "Go-Lang | Registering go Latest Version"
   ansible.builtin.set_fact:
     go_latest_version: "go version {{ go_latest_version_json.json[0].version }} {{ goos }}/{{ goarch }}"
+  
+
+- name: Debug encrypted variable
+  debug:
+    var: go_latest_version
+  #no_log: true # This prevents the actual content from being logged
+
 
 - name: "Go-Lang | Registering go Latest Release"
   ansible.builtin.set_fact:
     go_latest_release: "{{ go_latest_version_json.json[0].version }}"
+  when: not ansible_check_mode
 
 - name: "Go-Lang | Define go_file"
   ansible.builtin.set_fact:

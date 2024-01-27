@@ -115,7 +115,7 @@
 - name: Debug encrypted variable
   debug:
     var: OPENAI_KEY
-  #no_log: true # This prevents the actual content from being logged
+  no_log: true # This prevents the actual content from being logged
 
 - name: "Bash | Set private variables"
   ansible.builtin.template:
