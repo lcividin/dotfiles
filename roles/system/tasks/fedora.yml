@@ -26,6 +26,7 @@
   ansible.builtin.dnf:
     name: dnf-plugins-core
     state: present
+  become: true
 
 - name: "System | Update DNF Repos and Upgrade DNF Packages"
   ansible.builtin.dnf:
@@ -34,76 +35,57 @@
     state: latest
   become: true
 
-# - name: "System | Install system76 Packages when on system76 machine type"
-#   ansible.builtin.dnf:
-#     name:
-#       - system76-dkms
-#       - system76-power
-#       - system76-drivers
-#       - system76-firmware
-#       - system76-io-dkms
-#       - system76-acpi-dkms
-#       - firmware-manager
-#     state: present
-#   become: true
-#   when: system_type == "Oryx Pro"
-
-# - name: "System | Install Packages"
-#   ansible.builtin.dnf:
-#     name:
-#       - jq
-#       - git 
-#       - git-lfs
-#       - htop
-#       - tmux
-#       - gcc
-#       - gcc-c++
-#       - make
-#       - go-task
-#       - openssl-devel
-#       - "@Development Tools"
-#       - "@Development Libraries"
-#       - "@C Development Tools and Libraries"
-#       - ncurses-devel
-#       - autoconf
-#       - wl-clipboard
-#       - libxslt
-#       - fop
-#       - inotify-tools
-#       - ffmpeg
-#       - ffmpeg-libs
-#       - ffmpegthumbnailer
-#       - gnome-tweaks
-#       - blender
-#       - inkscape
-#       - gimp
-#       - steam
-#       - lutris
-#       - calibre  
-#       - toilet
-#       - dotnet-sdk-8.0
-#       - unrar
-#     state: present
-#   become: true
-
-- name: Import Brave Browser GPG Key
-  ansible.builtin.rpm_key:
-    key: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-    state: present
-
-- name: Add Brave Browser Repo
-  ansible.builtin.yum_repository:
-    name: brave-browser
-    description: Brave Browser
-    baseurl: https://brave-browser-rpm-release.s3.brave.com/x86_64/
-    gpgkey: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-    gpgcheck: true
-    enabled: true
-
-- name: Install Brave Browser
+- name: "System | Install system76 Packages when on system76 machine type"
   ansible.builtin.dnf:
-    name: brave-browser
+    name:
+      - system76-dkms
+      - system76-power
+      - system76-drivers
+      - system76-firmware
+      - system76-io-dkms
+      - system76-acpi-dkms
+      - firmware-manager
     state: present
+  become: true
+  when: system_type == "Oryx Pro" and not ansible_check_mode
+
+- name: "System | Install Packages"
+  ansible.builtin.dnf:
+    name:
+      - jq
+      - git 
+      - git-lfs
+      - htop
+      - tmux
+      - gcc
+      - gcc-c++
+      - make
+      - go-task
+      - openssl-devel
+      - "@Development Tools"
+      - "@Development Libraries"
+      - "@C Development Tools and Libraries"
+      - ncurses-devel
+      - autoconf
+      - wl-clipboard
+      - libxslt
+      - fop
+      - inotify-tools
+      - ffmpeg
+      - ffmpeg-libs
+      - ffmpegthumbnailer
+      - gnome-tweaks
+      - blender
+      - inkscape
+      - gimp
+      - steam
+      - lutris
+      - calibre  
+      - toilet
+      - dotnet-sdk-8.0
+      - unrar
+    state: present
+  become: true
 
 - name: Install Flatpak packages
   community.general.flatpak:

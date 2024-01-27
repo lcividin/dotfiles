@@ -34,3 +34,23 @@
     name: brave-browser
     state: present
   when: brave_installed.stdout == ""
+
+# This is another option for installing Brave Browser
+#- name: Import Brave Browser GPG Key
+#   ansible.builtin.rpm_key:
+#     key: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+#     state: present
+
+# - name: Add Brave Browser Repo
+#   ansible.builtin.yum_repository:
+#     name: brave-browser
+#     description: Brave Browser
+#     baseurl: https://brave-browser-rpm-release.s3.brave.com/x86_64/
+#     gpgkey: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+#     gpgcheck: true
+#     enabled: true
+
+# - name: Install Brave Browser
+#   ansible.builtin.dnf:
+#     name: brave-browser
+#     state: present
