@@ -1,25 +1,29 @@
-- name: Check if Podman is installed
+- name: "Podman | Check if Podman is installed"
   command: podman --version
   register: podman_version
   ignore_errors: true
   become: true
 
-- name: Install Podman
+- name: "Podman | Install Podman"
   ansible.builtin.dnf:
     name: 
       - podman
       - podman-docker
       - podman-compose
+      - podman-plugins
+      - containernetworking-plugins
     state: present
   when: podman_version.rc != 0
   become: true
 
-- name: Update Podman
+- name: "Podman | Update Podman"
   ansible.builtin.dnf:
     name: 
       - podman
       - podman-docker
       - podman-compose
+      - podman-plugins
+      - containernetworking-plugins
     state: latest
   when: podman_version.stdout != "podman_version"
   become: true
