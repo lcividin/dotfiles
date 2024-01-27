@@ -17,3 +17,4 @@
   ansible.builtin.dnf:
     name: code
     state: present
+  become: true
