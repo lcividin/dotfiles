@@ -20,9 +20,9 @@
   check_mode: false
   when: not ansible_check_mode
 
-- name: Lua | Install Lua modules
-  command:
-    cmd: luarocks install {{ item }} --lacal
-  loop:
-    - luabitop
-  when: item not in rocks.stdout and not ansible_check_mode
+# - name: Lua | Install Lua modules
+#   command:
+#     cmd: luarocks install {{ item }} --lacal
+#   loop:
+#     - luabitop
+#   when: not ansible_check_mode and item not in rocks.stdout
