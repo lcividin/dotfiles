@@ -122,4 +122,4 @@
       notify:
         - Remove extracted go directory
 
-  when: not ansible_check_mode or go_latest_version not in current_go_version.stdout|default('')
+  when: not ansible_check_mode and go_latest_version not in current_go_version.stdout|default('')
