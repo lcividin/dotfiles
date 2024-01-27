@@ -25,4 +25,4 @@
     cmd: luarocks install {{ item }} --lacal
   loop:
     - luabitop
-  when: item not in rocks.stdout
+  when: item not in rocks.stdout and not ansible_check_mode
