@@ -83,7 +83,6 @@
         path: "/tmp/{{ go_file }}.tar.gz"
         state: absent
       become: true
-      when: not ansible_check_mode
 
     - name: "Go-Lang | Downloading GoLang Release"
       ansible.builtin.get_url:
@@ -123,4 +122,4 @@
       notify:
         - Remove extracted go directory
 
-  when: go_latest_version not in current_go_version.stdout|default('')
+  when: not ansible_check_mode or go_latest_version not in current_go_version.stdout|default('')
