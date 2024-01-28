@@ -1,41 +1,19 @@
 ---
-- name: Add RPM Fusion free repository
+- name: "System | Add RPM Fusion Repos"
   ansible.builtin.yum_repository:
-    name: rpmfusion-free
-    description: RPM Fusion free repository
-    baseurl: https://mirrors.rpmfusion.org/free/fedora/releases/$releasever/Everything/$basearch/os/
-    gpgkey: https://mirrors.rpmfusion.org/keys/rpmfusion-free-fedora-latest.asc
-    gpgcheck: yes
-    become: true
-    enabled: yes
+    name: "Fedora {{ ansible_distribution_major_version }} rpmfusion-free"
+    description: "Fedora {{ ansible_distribution_major_version }} RPM Fusion Free"
+    baseurl: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
     state: present
+  become: true 
 
-- name: Add RPM Fusion non-free repository
+- name: "System | Add RPM Fusion Nonfree Repos"
   ansible.builtin.yum_repository:
-    name: rpmfusion-nonfree
-    description: RPM Fusion non-free repository
-    baseurl: https://mirrors.rpmfusion.org/nonfree/fedora/releases/$releasever/Everything/$basearch/os/
-    gpgkey: https://mirrors.rpmfusion.org/keys/rpmfusion-nonfree-fedora-latest.asc
-    gpgcheck: yes
-    become: true
-    enabled: yes
+    name: "Fedora {{ ansible_distribution_major_version }} rpmfusion-nonfree"
+    description: "Fedora {{ ansible_distribution_major_version }} RPM Fusion Nonfree"
+    baseurl: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
     state: present
-
-# - name: "System | Add RPM Fusion Repos"
-#   ansible.builtin.yum_repository:
-#     name: "rpmfusion-free"
-#     description: "RPM Fusion Free"
-#     baseurl: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
-#     state: present
-#   become: true 
-
-# - name: "System | Add RPM Fusion Nonfree Repos"
-#   ansible.builtin.yum_repository:
-#     name: "rpmfusion-nonfree"
-#     description: "RPM Fusion Nonfree"
-#     baseurl: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
-#     state: present
-#   become: true
+  become: true
 
 - name: Enable Fedora Copr for System76 drivers on fedora 
   command:
