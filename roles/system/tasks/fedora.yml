@@ -7,6 +7,7 @@
     gpgcheck: yes
     gpgkey: "https://rpmfusion.org/keys?action=AttachFile&do=view&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
     state: present
+    enabled: true
   become: true 
 
 - name: "System | Add RPM Fusion Nonfree Repos"
@@ -17,6 +18,7 @@
     gpgcheck: yes
     gpgkey: "https://rpmfusion.org/keys?action=AttachFile&do=view&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
     state: present
+    enabled: true
   become: true
 
 - name: Enable Fedora Copr for System76 drivers on fedora 
