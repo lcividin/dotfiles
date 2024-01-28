@@ -3,7 +3,8 @@
   ansible.builtin.yum_repository:
     name: "rpmfusion-free"
     description: "RPM Fusion Free"
-    baseurl: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+    baseurl: "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+    metalink: "https://mirrors.rpmfusion.org/metalink?repo=free-fedora-{{ ansible_distribution_major_version }}&arch={{ ansible_architecture }}"
     gpgcheck: yes
     gpgkey: "https://rpmfusion.org/keys?action=AttachFile&do=view&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
     state: present
@@ -14,7 +15,8 @@
   ansible.builtin.yum_repository:
     name: "rpmfusion-nonfree"
     description: "RPM Fusion Nonfree"
-    baseurl: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+    baseurl: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+    metalink: "https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-{{ ansible_distribution_major_version }}&arch={{ ansible_architecture }}"
     gpgcheck: yes
     gpgkey: "https://rpmfusion.org/keys?action=AttachFile&do=view&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020"
     state: present
