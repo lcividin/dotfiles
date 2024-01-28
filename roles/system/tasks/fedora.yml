@@ -47,7 +47,7 @@
       - firmware-manager
     state: present
   become: true
-  when: system_type == "Oryx Pro" and not ansible_check_mode
+  when: ansible_product_name | lower == "Oryx Pro" and not ansible_check_mode
 
 - name: "System | Install Packages"
   ansible.builtin.dnf:
