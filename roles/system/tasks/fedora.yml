@@ -17,6 +17,9 @@
     baseurl: https://mirrors.rpmfusion.org/nonfree/fedora/releases/$releasever/Everything/$basearch/os/
     gpgkey: https://mirrors.rpmfusion.org/keys/rpmfusion-nonfree-fedora-latest.asc
     gpgcheck: yes
+    become: true
+    enabled: yes
+    state: present
 
 # - name: "System | Add RPM Fusion Repos"
 #   ansible.builtin.yum_repository:
