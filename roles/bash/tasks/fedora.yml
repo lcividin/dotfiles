@@ -112,7 +112,7 @@
     shell: /usr/bin/bash
   become: true
 
-- name: Debug encrypted variable
+- name: "Bash | Debug encrypted variable"
   debug:
     var: OPENAI_KEY
   no_log: true # This prevents the actual content from being logged

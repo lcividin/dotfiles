@@ -1,0 +1,9 @@
+---
+# This needs work need to be able to get latest version and register current etc
+# - name: Install Atomic Wallet
+#   ansible_builtin_get_url:
+#     url: https://download.atomicwallet.io/atomicwallet.x86_64.rpm
+#     dest: /tmp/atomicwallet.x86_64.rpm
+#     state: present
+#     update_cache: yes
+#     disable_gpg_check: yes

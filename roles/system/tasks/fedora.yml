@@ -52,15 +52,9 @@
 - name: "System | Install Packages"
   ansible.builtin.dnf:
     name:
-      - jq
-      - git 
-      - git-lfs
       - htop
       - tmux
-      - gcc
-      - gcc-c++
       - make
-      - go-task
       - openssl-devel
       - "@Development Tools"
       - "@Development Libraries"
