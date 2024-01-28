@@ -1,7 +1,7 @@
 ---
 - name: "System | Add RPM Fusion Repos"
   ansible.builtin.yum_repository:
-    name: "Fedora {{ ansible_distribution_major_version }} rpmfusion-free"
+    name: "rpmfusion-free"
     description: "Fedora {{ ansible_distribution_major_version }} RPM Fusion Free"
     baseurl: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
     state: present
@@ -9,7 +9,7 @@
 
 - name: "System | Add RPM Fusion Nonfree Repos"
   ansible.builtin.yum_repository:
-    name: "Fedora {{ ansible_distribution_major_version }} rpmfusion-nonfree"
+    name: "rpmfusion-nonfree"
     description: "Fedora {{ ansible_distribution_major_version }} RPM Fusion Nonfree"
     baseurl: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
     state: present
